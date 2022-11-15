@@ -23,6 +23,7 @@
 </head>
 
 <body class="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
+{{--<body class="bg-gray-200  font-sans leading-normal tracking-normal mt-12">--}}
 
 <header>
     <!--Nav-->
