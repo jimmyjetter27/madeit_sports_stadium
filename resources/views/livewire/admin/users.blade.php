@@ -28,6 +28,34 @@
             </tr>
             </thead>
             <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                @foreach($users as $user)
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $user->name }}
+                    </th>
+                    <td class="py-4 px-6">
+                        {{ $user->email }}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{ $user->type }}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{ $user->created_at }}
+                    </td>
+                    <td class="flex space-x-2 py-4 px-6">
+                        <a href="{{ url('editUser', [$user->id])}}">
+                            <button class=""><i class="fas fa-pen text-yellow-400"></i></button>
+                        </a>
+                        <form method="post" action="{{ url('deleteUser', [$user->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger ml-1"
+                                    onclick="return confirm('Proceed to delete account?');"><i
+                                        class="fas fa-trash text-red-900"></i></button>
+                        </form>
+                    </td>
+            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

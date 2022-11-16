@@ -62,6 +62,7 @@
             </div>
             <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                 <!--Metric Card-->
+                <a href="{{ route('admin-games') }}">
                 <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
                     <div class="flex flex-row items-center">
                         <div class="flex-shrink pr-4">
@@ -74,6 +75,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
                 <!--/Metric Card-->
             </div>
 

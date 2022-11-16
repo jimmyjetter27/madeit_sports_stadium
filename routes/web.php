@@ -40,4 +40,8 @@ Route::prefix('admin')->group(function () {
 
     // User Manipulation Routes
     Route::view('users', 'admin.users.users')->name('admin-users');
+
+    // Game Manipulation Routes
+    Route::view('games', 'admin.games.games')->name('admin-games');
+    Route::view('add_game', 'admin.games.add_game')->name('admin-new-game');
 });
