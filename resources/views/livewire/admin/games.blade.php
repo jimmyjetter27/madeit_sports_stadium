@@ -32,9 +32,9 @@
                 <tbody>
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     @foreach($games as $game)
-                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $game->name }}
-                        </th>
+                        </td>
                         <td class="py-4 px-6">
                             {{ $game->created_at }}
                         </td>
