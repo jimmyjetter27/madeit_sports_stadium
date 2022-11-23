@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -82,5 +85,24 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+    }
+
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        $email = $request->email;
+        $customer = Customer::query()->where('email', $email)->first();
+        if ($customer && Hash::check($request->password, $customer->password))
+        {
+            Auth::login($customer);
+//            return 'valid credentials!!! Hello '.\auth()->user()->name;
+            return view('dashboard');
+        } else {
+            return redirect()->back()->with('error_message', 'Invalid Credentials Entered');
+        }
     }
 }

@@ -44,4 +44,9 @@ Route::prefix('admin')->group(function () {
     // Game Manipulation Routes
     Route::view('games', 'admin.games.games')->name('admin-games');
     Route::view('add_game', 'admin.games.add_game')->name('admin-new-game');
+
+
+
+    // Customer Web Routes
+    Route::post('login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer-login');
 });
