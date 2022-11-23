@@ -41,6 +41,10 @@ Route::prefix('admin')->group(function () {
 
     // User Manipulation Routes
     Route::view('users', 'admin.users.users')->name('admin-users');
+    Route::view('new_user', 'admin.users.new_user');
+    Route::post('create_user', [AdminController::class, 'store']);
+    Route::view('edit_user/{id}', 'admin.users.update_user');
+    Route::delete('delete_user/{id}', [AdminController::class, 'destroy_user']);
 
     // Game Manipulation Routes
     Route::view('games', 'admin.games.games')->name('admin-games');

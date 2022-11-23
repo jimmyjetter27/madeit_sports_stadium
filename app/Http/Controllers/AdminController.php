@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserCollection;
 use App\Models\Admin;
+use App\Models\Customer;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -79,11 +81,30 @@ class AdminController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreAdminRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreAdminRequest $request)
     {
-        //
+        $name = $request->name;
+        $email = $request->email;
+        $password = $request->password;
+        $confirm_pass = $request->confirm_password;
+        $user_type = $request->type;
+        if ($confirm_pass != $password)
+        {
+            return redirect()->back()->with('error_message', 'Passwords do not match');
+        } else {
+            $user = Str::after($user_type, 'App/Models/');
+//            dd($request->all());
+          $new_user = User::query()->create($request->all());
+          if ($new_user)
+          {
+              return redirect()->route('admin-users')->with('success_message', $name.' has been successfully added');
+          } else {
+              return redirect()->back()->with('error_message', 'An error occurred. Please try again');
+          }
+
+        }
     }
 
     /**
@@ -130,4 +151,11 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function destroy_user($id)
+    {
+        User::query()->find($id)->delete();
+        return redirect()->back()->with('success_message', 'User successfully deleted');
+    }
+
 }
