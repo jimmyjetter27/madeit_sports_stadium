@@ -28,12 +28,13 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $admin = Admin::where('email', $request->email)->first();
+//        dd($admin);
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (! $admin || ! Hash::check($request->password, $admin->password)) {
             return redirect()->back()->with('error_message', 'The provided credentials are incorrect.');
         }
-        Auth::login($user);
+        Auth::login($admin);
         return view('admin.dashboard', [
             'total_user_count' => User::query()->get()->count(),
             'new_user_count' => User::query()->latest()->limit(3)->get()->count(),

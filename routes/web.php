@@ -28,12 +28,13 @@ Route::middleware([
     })->name('dashboard');
 });
 
+// Admin Routes
 Route::prefix('admin')->group(function () {
 
     // Profile Routes
     Route::view('admin', 'admin.login');
-    Route::get('login_page', [AdminController::class, 'login_page']);
-    Route::post('login', [AdminController::class, 'login'])->name('admin-login');
+//    Route::get('login_page', [AdminController::class, 'login_page']);
+    Route::post('login', [AdminController::class, 'login']);
     Route::view('dashboard', 'admin.dashboard')->name('admin-dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin-profile');
     Route::get('logout', [AdminController::class, 'logout'])->name('admin-logout');
@@ -45,8 +46,7 @@ Route::prefix('admin')->group(function () {
     Route::view('games', 'admin.games.games')->name('admin-games');
     Route::view('add_game', 'admin.games.add_game')->name('admin-new-game');
 
-
-
-    // Customer Web Routes
-    Route::post('login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer-login');
 });
+
+// Customer Web Routes
+Route::post('login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer-login');

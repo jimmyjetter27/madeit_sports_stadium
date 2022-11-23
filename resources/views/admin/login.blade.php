@@ -14,19 +14,20 @@
                                                 alt="logo"
                                         />
                                     </div>
-                                    <form method="POST" action="{{ route('admin-login') }}" class="mt-5">
+{{--                                    <form method="POST" action="{{ route('admin-login') }}" class="mt-5">--}}
+                                    <form method="POST" action="{{ url('admin/login') }}" class="mt-5">
                                         @csrf
                                         @if (session('error_message'))
                                             <h3 class="text-red-500">{{ session('error_message') }}</h3>
                                         @endif
                                         @if ($errors->any())
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li class="text-red-500">{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li class="text-red-500">{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
                                         @endif
-{{--                                        <h5 class="text-center text-red-500">H</h5>--}}
+                                        {{--                                        <h5 class="text-center text-red-500">H</h5>--}}
                                         <div class="mb-4">
                                             <input
                                                     type="text"
