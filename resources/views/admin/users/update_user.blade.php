@@ -51,7 +51,7 @@
             @elseif(session('success_message'))
                 <h2 class="text-green-500 text-center font-bold">{{ session('success_message') }}</h2>
             @endif
-            <form method="POST" action="{{ url('admin/update_user', [$user->id]) }}">
+            <form method="POST" action="{{ url('admin/update_user', [$user->id]) }}" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="mb-6">
@@ -76,13 +76,24 @@
                 <div class="mb-6">
                     <label for="user_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
                         User Type</label>
+                    @if(\Illuminate\Support\Str::after($user->type, 'App\Models\'') == 'Admin')
                     <select
                             name="type"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            name="user_type">
-                        <option value="App\Models\Admin">Admin</option>
+                            >
+                        <option selected value="App\\Models\Admin">{{ $user->type }}</option>
                         <option value="App\Models\Customer">Customer</option>
                     </select>
+                    @else
+                        <select
+                                name="type"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               >
+                            <option selected value="App\Models\Customer">{{ $user->type }}</option>
+                            <option value="App\Models\Admin">Admin</option>
+
+                        </select>
+                    @endif
                     @error('user_type') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="flex">

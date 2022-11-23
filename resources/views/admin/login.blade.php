@@ -18,7 +18,7 @@
                                     <form method="POST" action="{{ url('admin/login') }}" class="mt-5">
                                         @csrf
                                         @if (session('error_message'))
-                                            <h3 class="text-red-500">{{ session('error_message') }}</h3>
+                                            <h3 class="text-red-500 text-center">{{ session('error_message') }}</h3>
                                         @endif
                                         @if ($errors->any())
                                             <ul>

@@ -31,9 +31,11 @@ Route::middleware([
 // Admin Routes
 Route::prefix('admin')->group(function () {
     // Profile Routes
-    Route::view('login', 'admin.login');
+    Route::view('login', 'admin.login')->name('admin.login');
 //    Route::get('login_page', [AdminController::class, 'login_page']);
     Route::post('login', [AdminController::class, 'login']);
+
+    Route::middleware(['admin_auth'])->group(function () {
     Route::view('dashboard', 'admin.dashboard')->name('admin-dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin-profile');
     Route::get('logout', [AdminController::class, 'logout'])->name('admin-logout');
@@ -49,7 +51,9 @@ Route::prefix('admin')->group(function () {
     // Game Manipulation Routes
     Route::view('games', 'admin.games.games')->name('admin-games');
     Route::view('add_game', 'admin.games.add_game')->name('admin-new-game');
+    Route::post('create_game', [\App\Http\Controllers\GameController::class, 'store']);
 
+    });
 });
 
 // Customer Web Routes

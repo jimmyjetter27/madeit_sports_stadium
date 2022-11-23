@@ -18,6 +18,7 @@ class Users extends Component
     {
         $users = User::query()->latest()
 //            ->orderByDesc('', '')
+            ->where('id', '!=', auth()->user()->id) // fetch all users except authenticated user
             ->get();
         $this->users = new Collection($users);
 //        dd($this->users);

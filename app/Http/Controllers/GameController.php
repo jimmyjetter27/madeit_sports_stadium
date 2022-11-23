@@ -31,11 +31,27 @@ class GameController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'sport_image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        // Public Folder
+        $new_game = Game::query()->create([
+            'name' => $request->name,
+            'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension()
+        ]);
+        if ($new_game)
+        {
+            $imageName = $request->name.'.'.$request->sport_image->getClientOriginalExtension();
+            $request->sport_image->move(public_path('images'), $imageName);
+            return redirect()->back()->with('success_message', $request->name. ' has been successfully added');
+        } else {
+            return redirect()->back()->with('error_message', 'An error occurred');
+        }
     }
 
     /**
