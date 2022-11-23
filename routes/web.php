@@ -30,7 +30,6 @@ Route::middleware([
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
-
     // Profile Routes
     Route::view('login', 'admin.login');
 //    Route::get('login_page', [AdminController::class, 'login_page']);
@@ -43,7 +42,8 @@ Route::prefix('admin')->group(function () {
     Route::view('users', 'admin.users.users')->name('admin-users');
     Route::view('new_user', 'admin.users.new_user');
     Route::post('create_user', [AdminController::class, 'store']);
-    Route::view('edit_user/{id}', 'admin.users.update_user');
+    Route::get('edit_user/{id}', [AdminController::class, 'edit_user']);
+    Route::put('update_user/{id}', [AdminController::class, 'update_user']);
     Route::delete('delete_user/{id}', [AdminController::class, 'destroy_user']);
 
     // Game Manipulation Routes

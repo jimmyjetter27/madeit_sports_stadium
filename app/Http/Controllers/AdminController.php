@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserCollection;
 use App\Models\Admin;
 use App\Models\Customer;
@@ -139,6 +140,26 @@ class AdminController extends Controller
     public function update(UpdateAdminRequest $request, Admin $admin)
     {
         //
+    }
+
+    public function edit_user($id)
+    {
+        $user = User::query()->find($id);
+        return view('admin.users.update_user', [
+            'user' => $user
+        ]);
+    }
+
+    public function update_user(UpdateUserRequest $request, $id)
+    {
+        $user = User::query()->find($id);
+        $update = $user->update($request->all());
+        if ($update)
+        {
+            return redirect()->back()->with('success_message', 'Account details has been updated successfully');
+        } else {
+            return redirect()->back()->with('error_message', 'An error occurred');
+        }
     }
 
     /**
