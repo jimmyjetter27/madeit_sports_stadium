@@ -48,11 +48,14 @@ Route::prefix('admin')->group(function () {
     Route::put('update_user/{id}', [AdminController::class, 'update_user']);
     Route::delete('delete_user/{id}', [AdminController::class, 'destroy_user']);
 
+
     // Game Manipulation Routes
     Route::view('games', 'admin.games.games')->name('admin-games');
     Route::view('add_game', 'admin.games.add_game')->name('admin-new-game');
     Route::post('create_game', [\App\Http\Controllers\GameController::class, 'store']);
-
+    Route::get('edit_game/{id}', [\App\Http\Controllers\GameController::class, 'edit']);
+    Route::put('update_game/{id}', [\App\Http\Controllers\GameController::class, 'update']);
+    Route::delete('delete_game/{id}', [\App\Http\Controllers\GameController::class, 'destroy']);
     });
 });
 

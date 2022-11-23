@@ -32,6 +32,9 @@
             </button>
             </a>
 
+            @if (session('success_message'))
+                <h2 class="text-green-500 text-center font-bold">{{ session('success_message') }}</h2>
+            @endif
             <table class=" table w-full text-sm text-left text-gray-500 dark:text-gray-400" id="table">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -61,11 +64,11 @@
                         <td class="py-4 px-6">
                             {{ $game->created_at }}
                         </td>
-                        <td class="flex space-x-2 py-4 px-6">
-                            <a href="{{ url('editUser', [$game->id])}}">
+                        <td class="column items-center py-4 space-y-2">
+                            <a href="{{ url('admin/edit_game', [$game->id])}}">
                                 <button class=""><i class="fas fa-pen text-yellow-400"></i></button>
                             </a>
-                            <form method="post" action="{{ url('deleteUser', [$game->id]) }}">
+                            <form method="post" action="{{ url('admin/delete_game', [$game->id]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger ml-1"

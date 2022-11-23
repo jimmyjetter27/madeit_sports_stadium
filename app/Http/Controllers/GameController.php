@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class GameController extends Controller
 {
@@ -39,7 +40,6 @@ class GameController extends Controller
             'name' => 'required',
             'sport_image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ]);
-        // Public Folder
         $new_game = Game::query()->create([
             'name' => $request->name,
             'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension()
@@ -69,11 +69,12 @@ class GameController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Game  $game
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Game $game)
+    public function edit($id)
     {
-        //
+        $game = Game::query()->find($id);
+        return view('admin.games.update_game', ['game' => $game]);
     }
 
     /**
@@ -81,21 +82,39 @@ class GameController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Game  $game
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Game $game)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'sport_image' => 'image|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        $game = Game::query()->find($id);
+        $game->update([
+            'name' => $request->name,
+            'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension()
+        ]);
+        if ($request->hasFile('sport_image'))
+        {
+            $imageName = $request->name.'.'.$request->sport_image->getClientOriginalExtension();
+            $request->sport_image->move(public_path('images'), $imageName);
+        }
+        return redirect()->back()->with('success_message', $request->name. ' has been successfully updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Game  $game
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Game $game)
+    public function destroy($id)
     {
-        //
+        $game = Game::query()->find($id);
+        $image_path = public_path('images/'.$game->sport_image);
+        File::delete($image_path);
+        $game->delete();
+        return redirect()->back()->with('success_message', $game->name.' has been deleted');
     }
 }
