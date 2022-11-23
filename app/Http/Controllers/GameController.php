@@ -91,14 +91,17 @@ class GameController extends Controller
             'sport_image' => 'image|mimes:png,jpg,jpeg|max:2048'
         ]);
         $game = Game::query()->find($id);
-        $game->update([
-            'name' => $request->name,
-            'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension()
-        ]);
         if ($request->hasFile('sport_image'))
         {
+            $game->update([
+                'name' => $request->name,
+                'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension()
+            ]);
+
             $imageName = $request->name.'.'.$request->sport_image->getClientOriginalExtension();
             $request->sport_image->move(public_path('images'), $imageName);
+        } else {
+            $game->update(['name' => $request->name,]);
         }
         return redirect()->back()->with('success_message', $request->name. ' has been successfully updated');
     }

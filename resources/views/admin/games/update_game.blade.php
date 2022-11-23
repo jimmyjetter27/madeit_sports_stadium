@@ -39,27 +39,33 @@
 
         <div class="flex justify-center">
             <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="rounded-t-lg w-full" src="{{ asset('images/'.$game->sport_image) }}" alt=""/>
+                </a>
                 @if (session('error_message'))
                     <h3 class="text-red-500">{{ session('error_message') }}</h3>
                 @elseif(session('success_message'))
                     <h2 class="text-green-500 text-center font-bold">{{ session('success_message') }}</h2>
                 @endif
-                <form class="space-y-6" method="POST" action="{{ url('admin/update_game', [$game->id]) }}" enctype="multipart/form-data">
+                <form class="space-y-6" method="POST" action="{{ url('admin/update_game', [$game->id]) }}"
+                      enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-                    <h5 class="text-xl font-medium text-gray-900 dark:text-white">Update Sport Details</h5>
+                    <h5 class="text-xl font-medium text-gray-900 dark:text-white">Update Details</h5>
                     <div>
-                        <label for="game" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Game</label>
+                        <label for="game"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Game</label>
                         <input type="text" name="name"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                value="{{ $game->name }}" required>
                         @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div>
-                        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                        <label for="image"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
                         <input type="file" name="sport_image" value="{{ $game->sport_image }}"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                               >
+                        >
                         @error('sport_image') <span class="error text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <button type="submit"
