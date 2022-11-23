@@ -32,7 +32,7 @@ Route::middleware([
 Route::prefix('admin')->group(function () {
 
     // Profile Routes
-    Route::view('admin', 'admin.login');
+    Route::view('login', 'admin.login');
 //    Route::get('login_page', [AdminController::class, 'login_page']);
     Route::post('login', [AdminController::class, 'login']);
     Route::view('dashboard', 'admin.dashboard')->name('admin-dashboard');
