@@ -1,31 +1,7 @@
-<x-app-layout>
-    <div class="w-full h-20 bg-black text-white flex justify-between items-center p-3">
-        <h4>James</h4>
-        <h4>Nabiah</h4>
-        <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-        <!-- Dropdown menu -->
-        <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
-            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-                <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-                </li>
-            </ul>
-        </div>
+@extends('customer.authenticated.layouts.app')
+@section('main')
+    <div class="sports text-center"><h2 class="font-extrabold">Available Sports</h2></div>
+    <div class="flex justify-between">
+    @include('customer.authenticated.layouts.sports')
     </div>
-    <div class="h-screen w-36 bg-slate-600 text-white flex justify-center pt-4">
-        <ul class="space-y-40 hover:cursor-pointer">
-            <li>Home</li>
-            <li>Login</li>
-            <li>Register</li>
-        </ul>
-    </div>
-</x-app-layout>
+@endsection
