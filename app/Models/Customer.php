@@ -7,5 +7,6 @@ use Parental\HasParent;
 
 class Customer extends User
 {
+
     use HasFactory, HasParent;
 }
