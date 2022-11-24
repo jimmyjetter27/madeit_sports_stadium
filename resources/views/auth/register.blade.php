@@ -8,7 +8,7 @@
                         class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
                 >
                     <img
-                            src="https://images8.alphacoders.com/476/476725.jpg"
+                            src="https://c4.wallpaperflare.com/wallpaper/644/479/730/lebron-james-nba-basketball-wallpaper-preview.jpg"
                             class="w-full"
                             alt="Sample image"
                     />
