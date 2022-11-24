@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -100,9 +101,15 @@ class CustomerController extends Controller
         {
             Auth::login($customer);
 //            return 'valid credentials!!! Hello '.\auth()->user()->name;
-            return view('dashboard');
+            return view('dashboard', ['games' => Game::query()->get()]);
         } else {
             return redirect()->back()->with('error_message', 'Invalid Credentials Entered');
         }
+    }
+
+    public function logout()
+    {
+        \auth()->logout();
+        return view('welcome');
     }
 }

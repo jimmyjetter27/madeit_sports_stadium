@@ -38,11 +38,13 @@ class GameController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'sport_image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+            'sport_image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'amount' => 'required|numeric'
         ]);
         $new_game = Game::query()->create([
             'name' => $request->name,
-            'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension()
+            'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension(),
+            'amount' => $request->amount
         ]);
         if ($new_game)
         {
@@ -88,20 +90,22 @@ class GameController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'sport_image' => 'image|mimes:png,jpg,jpeg|max:2048'
+            'sport_image' => 'image|mimes:png,jpg,jpeg|max:2048',
+            'amount' => 'required|numeric'
         ]);
         $game = Game::query()->find($id);
         if ($request->hasFile('sport_image'))
         {
             $game->update([
                 'name' => $request->name,
-                'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension()
+                'sport_image' => $request->name.'.'.$request->sport_image->getClientOriginalExtension(),
+                'amount' => $request->amount
             ]);
 
             $imageName = $request->name.'.'.$request->sport_image->getClientOriginalExtension();
             $request->sport_image->move(public_path('images'), $imageName);
         } else {
-            $game->update(['name' => $request->name,]);
+            $game->update(['name' => $request->name, 'amount' => $request->amount]);
         }
         return redirect()->back()->with('success_message', $request->name. ' has been successfully updated');
     }

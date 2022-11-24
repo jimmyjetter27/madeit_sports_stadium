@@ -64,6 +64,17 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function isAdmin(): bool
+    {
+        return $this->type == Admin::class;
+    }
+
+    public function isCustomer(): bool
+    {
+        return $this->type == Customer::class;
+    }
+
+
     public function getTypeAttribute($value)
     {
         return Str::after($value, "App\Models\\");

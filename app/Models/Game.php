@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 class Game extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'sport_image'];
+    protected $fillable = ['name', 'sport_image', 'amount'];
 
     public function getCreatedAtAttribute($value)
     {

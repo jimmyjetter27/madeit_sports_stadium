@@ -1,35 +1,37 @@
-<div class="h-24 z-50 relative container mx-auto px-6 grid grid-cols-3">
+<header>
+    <!--Nav-->
+    <nav aria-label="menu nav" class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
 
-    <div x-data="{showMenu: false}" class="flex items-center">
-        <!-- menu button -->
-{{--        <button x-on:click="showMenu = true">--}}
-{{--            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>--}}
-{{--        </button>--}}
-
-        <div x-show="showMenu" class="fixed inset-0 w-full h-full bg-white z-50 text-yellow-900">
-            <div class="container h-full mx-auto px-6 py-8 relative z-10 flex flex-col items-center justify-center text-2xl uppercase font-bold tracking-widest space-y-6">
-                <button x-on:click="showMenu = false" class="absolute top-0 left-0 mt-8 ml-6">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </button>
+        <div class="flex flex-wrap items-center">
+            <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
+                <a href="{{ url('dashboard') }}" aria-label="Home">
+                    {{--                    <span class="text-xl pl-2"><i class="em em-grinning"></i></span>--}}
+                    <span class="text-xl pl-2">Madeit Sports</span>
+                </a>
             </div>
-            <div class="absolute inset-0 w-full h-full bg-yellow-900 bg-opacity-20"></div>
-        </div>
-    </div>
 
-    <div class="flex items-center justify-center">
-        <a href="/" class="text-white uppercase font-bold text-2xl tracking-widest">
-            {{ env('APP_NAME') }}
-        </a>
-    </div>
+            <div class="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2">
 
-    <div class="flex items-center justify-end text-white">
-        <div class="space-x-2">
-        <!-- contact button -->
-        <a href="/login">
-            <i class="fas fa-door-open">Login</i>
-{{--            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>--}}
-        </a>
+            </div>
+
+            <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
+                <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                    <li class="flex-1 md:flex-none md:mr-3">
+                        <div class="relative inline-block">
+                            <button onclick="toggleDD('myDropdown')" class="drop-button text-white py-2 px-2"> <span class="pr-2"><i class="fa fa-solid fa-user"></i></span>{{ auth()->user()->name }} <svg class="h-3 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg></button>
+                            <div id="myDropdown" class="dropdownlist absolute bg-gray-800 text-white right-0 mt-3 p-3 overflow-auto z-30 invisible">
+                                <input type="text" class="drop-search p-2 text-gray-600" placeholder="Search.." id="myInput" onkeyup="filterDD('myDropdown','myInput')">
+                                <a href="{{ route('admin-profile') }}" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-user fa-fw"></i> Profile</a>
+                                <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i> Settings</a>
+                                <div class="border border-gray-800"></div>
+                                <a href="{{ route('admin-logout') }}" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</div>
-<div class="w-full h-24 bg-yellow-900 bg-opacity-95 absolute top-0 left-0"></div>
+
+    </nav>
+</header>

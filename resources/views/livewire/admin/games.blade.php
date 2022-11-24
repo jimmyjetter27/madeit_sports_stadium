@@ -45,6 +45,9 @@
                         Image
                     </th>
                     <th scope="col" class="py-3 px-6">
+                        Amount
+                    </th>
+                    <th scope="col" class="py-3 px-6">
                         Date Created
                     </th>
                     <th scope="col" class="py-3 px-6">
@@ -60,6 +63,9 @@
                         </td>
                         <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <img class="rounded" width="150" height="140" src="{{ asset('/images/'.$game->sport_image) }}" alt="{{ $game->name }}">
+                        </td>
+                        <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $game->amount }}
                         </td>
                         <td class="py-4 px-6">
                             {{ $game->created_at }}

@@ -10,7 +10,8 @@
                                     <div class="text-center">
                                         <img
                                                 class="mx-auto w-48"
-                                                src="{{ asset('images/football.jpg') }}"
+{{--                                                src="{{ asset('images/football.jpg') }}"--}}
+                                                src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/MA_00931114_hechgp.jpg"
                                                 alt="logo"
                                         />
                                     </div>

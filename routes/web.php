@@ -32,9 +32,9 @@ Route::middleware([
 Route::prefix('admin')->group(function () {
     // Profile Routes
     Route::view('login', 'admin.login')->name('admin.login');
-//    Route::get('login_page', [AdminController::class, 'login_page']);
     Route::post('login', [AdminController::class, 'login']);
 
+    // Admin Protected Routes
     Route::middleware(['admin_auth'])->group(function () {
     Route::view('dashboard', 'admin.dashboard')->name('admin-dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin-profile');
@@ -60,4 +60,14 @@ Route::prefix('admin')->group(function () {
 });
 
 // Customer Web Routes
+Route::view('sports', 'sports', ['games' => \App\Models\Game::query()->latest()->get()]);
+Route::view('login', 'auth.login')->name('login');
 Route::post('login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer-login');
+
+
+// Customer Protected Routes
+Route::middleware(['auth:web'])->group(function () {
+    Route::view('dashboard', 'dashboard', ['games' => \App\Models\Game::query()->latest()->get()]);
+    Route::get('logout', [\App\Http\Controllers\CustomerController::class, 'logout']);
+});
+

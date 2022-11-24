@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Admin;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check())
+        if (!auth()->check() && auth()->user()->type != 'Admin')
         {
             return redirect('admin/login')->with('error_message', 'Please login.');
         }

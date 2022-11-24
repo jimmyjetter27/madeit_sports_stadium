@@ -27,7 +27,7 @@
                 <div class="w-24 h-2 bg-yellow-800 mb-4"></div>
                 <h2 class="font-display font-bold text-2xl md:text-3xl lg:text-4xl mb-6">Sports</h2>
                 <p class="font-light text-gray-600 text-sm md:text-base mb-6 leading-relaxed">We have a whole lot of sporting activities...</p>
-                <a href="#" class="inline-block border-2 border-yellow-800 font-light text-yellow-800 text-sm uppercase tracking-widest py-3 px-8 hover:bg-yellow-800 hover:text-white">Read more</a>
+                <a href="{{ url('sports') }}" class="inline-block border-2 border-yellow-800 font-light text-yellow-800 text-sm uppercase tracking-widest py-3 px-8 hover:bg-yellow-800 hover:text-white">Click here</a>
             </div>
         </div>
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('sport_image');
+            $table->decimal('amount', 8, 4);
             $table->timestamps();
         });
     }
