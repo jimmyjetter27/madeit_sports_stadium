@@ -17,7 +17,10 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() && auth()->user()->type != 'Admin')
+        if (!auth()->check())
+        {
+            return redirect('admin/login')->with('error_message', 'Please login.');
+        } elseif (auth()->check() && auth()->user()->type != 'Admin')
         {
             return redirect('admin/login')->with('error_message', 'Please login.');
         }

@@ -10,6 +10,6 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'amount', 'transaction_id', 'phone_number', 'network', 'status'
+        'total_amount', 'transaction_id', 'phone_number', 'network', 'status'
     ];
 }

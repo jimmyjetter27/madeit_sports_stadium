@@ -1,9 +1,9 @@
 <div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
+    {{-- The whole world belongs to you. --}}
     <div>
         <div class="bg-gray-800 pt-3">
             <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-                <h1 class="font-bold pl-2">Games</h1>
+                <h1 class="font-bold pl-2">Venues</h1>
             </div>
         </div>
 
@@ -19,17 +19,17 @@
                 <li aria-current="page">
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Games</span>
+                        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Venues</span>
                     </div>
                 </li>
             </ol>
         </nav>
 
         <div class="overflow-x-auto relative">
-            <a href="{{ route('admin-new-game') }}">
-            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-5">
-                Add New Game <i class="fas fa-plus"></i>
-            </button>
+            <a href="{{ route('admin-new-venue') }}">
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-5">
+                    Add New Venue <i class="fas fa-plus"></i>
+                </button>
             </a>
 
             @if (session('success_message'))
@@ -42,10 +42,10 @@
                         Name
                     </th>
                     <th scope="col" class="py-3 px-6">
-                        Image
+                        Location
                     </th>
                     <th scope="col" class="py-3 px-6">
-                        Amount
+                        Description
                     </th>
                     <th scope="col" class="py-3 px-6">
                         Date Created
@@ -57,28 +57,28 @@
                 </thead>
                 <tbody>
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    @foreach($games as $game)
+                    @foreach($venues as $venue)
                         <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $game->name }}
+                            {{ $venue->name }}
                         </td>
                         <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <img class="rounded" width="150" height="140" src="{{ asset('/images/'.$game->sport_image) }}" alt="{{ $game->name }}">
+                            {{ $venue->location }}
                         </td>
                         <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $game->amount }}
+                            {{ $venue->description ? : 'N/A' }}
                         </td>
                         <td class="py-4 px-6">
-                            {{ $game->created_at }}
+                            {{ $venue->created_at }}
                         </td>
-                        <td class="column items-center py-4 space-y-2">
-                            <a href="{{ url('admin/edit_game', [$game->id])}}">
+                        <td class="row flex items-center px-3 space-x-2">
+                            <a href="{{ url('admin/edit_venue', [$venue->id])}}">
                                 <button class=""><i class="fas fa-pen text-yellow-400"></i></button>
                             </a>
-                            <form method="post" action="{{ url('admin/delete_game', [$game->id]) }}">
+                            <form method="post" action="{{ url('admin/delete_venue', [$venue->id]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger ml-1"
-                                        onclick="return confirm('Proceed to delete game?');"><i
+                                        onclick="return confirm('Proceed to delete venue?');"><i
                                             class="fas fa-trash text-red-900"></i></button>
                             </form>
                         </td>
@@ -88,5 +88,4 @@
             </table>
         </div>
     </div>
-
 </div>

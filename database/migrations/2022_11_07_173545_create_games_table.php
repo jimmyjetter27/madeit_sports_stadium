@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('sport_image');
+            $table->string('sport_image')->nullable();
             $table->decimal('amount', 8, 4);
             $table->timestamps();
         });

@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('game_id');
+            $table->unsignedBigInteger('venue_id');
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->string('status')->default('pending');

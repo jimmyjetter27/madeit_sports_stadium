@@ -64,6 +64,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function counter()
+    {
+        return $this->hasOne(Counter::class);
+    }
+
     public function isAdmin(): bool
     {
         return $this->type == Admin::class;
