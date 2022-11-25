@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->integer('total_amount');
-            $table->integer('transaction_id');
+            $table->string('transaction_id');
             $table->string('phone_number');
             $table->string('network')->nullable();
             $table->string('status')->default('pending');

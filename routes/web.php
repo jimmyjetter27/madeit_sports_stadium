@@ -73,9 +73,10 @@ Route::middleware(['visit_counter'])->group(function () { // Count every visit
 
 
         // Booking Routes
-        Route::view('bookings', 'admin.games.games')->name('admin-bookings');
+        Route::view('bookings', 'admin.bookings.bookings', [
+            'bookings' => \App\Models\Booking::query()->latest()->get()
+        ])->name('admin-bookings');
     });
-
 
 
 // Customer Web Routes
@@ -87,7 +88,13 @@ Route::middleware(['visit_counter'])->group(function () { // Count every visit
 // Customer Protected Routes
     Route::middleware(['auth:web'])->group(function () {
         Route::view('dashboard', 'dashboard', ['games' => \App\Models\Game::query()->latest()->get()]);
-        Route::view('book', 'book');
+        Route::get('book/{id}', function ($id) {
+            return view('book',
+                ['game' => \App\Models\Game::find($id),
+                    'venues' => \App\Models\Venue::query()->latest()->get()]
+            );
+        });
+        Route::post('book_now', [\App\Http\Controllers\BookingController::class, 'book']);
         Route::get('logout', [\App\Http\Controllers\CustomerController::class, 'logout']);
     });
 

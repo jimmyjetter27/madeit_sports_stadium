@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('game_id');
             $table->unsignedBigInteger('venue_id');
+            $table->unsignedBigInteger('payment_id');
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->string('status')->default('pending');

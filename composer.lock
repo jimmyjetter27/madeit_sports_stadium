@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cd2af673ffd66ecd5671ce688712390",
+    "content-hash": "8e54be43c9055ad0bffe1341ffe2967a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1252,6 +1252,44 @@
                 }
             ],
             "time": "2020-06-13T08:05:20+00:00"
+        },
+        {
+            "name": "jimmyjetter/xchange_connect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jimmyjetter27/xchange-connect.git",
+                "reference": "7bf04fb2a25d4ad9bea26a2f39cbba0707162d1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jimmyjetter27/xchange-connect/zipball/7bf04fb2a25d4ad9bea26a2f39cbba0707162d1e",
+                "reference": "7bf04fb2a25d4ad9bea26a2f39cbba0707162d1e",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jimmyjetter27",
+                    "email": "jimmyjetter27@gmail.com"
+                }
+            ],
+            "description": "Connect to Korba Xchange",
+            "support": {
+                "issues": "https://github.com/jimmyjetter27/xchange-connect/issues",
+                "source": "https://github.com/jimmyjetter27/xchange-connect/tree/master"
+            },
+            "time": "2022-11-10T11:56:03+00:00"
         },
         {
             "name": "laravel/fortify",
@@ -9112,7 +9150,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "jimmyjetter/xchange_connect": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
