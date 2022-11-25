@@ -33,6 +33,7 @@ class Booking extends Model
         return $this->belongsTo(Payment::class);
     }
 
+
     public function getCreatedAtAttribute($value)
     {
         return Carbon::create($value)->format('D, jSe F Y');
