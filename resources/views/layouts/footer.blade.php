@@ -1,24 +1,26 @@
-<div class="bg-gray-900 text-white text-opacity-40 font-semibold uppercase text-xs tracking-widest bg-opacity-80 px-12">
-    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12 text-center lg:text-left py-24">
-        <div>
-            <div class="text-white opacity-50 text-4xl font-display"></div>
-        </div>
-        <div>
-            <div class="font-display text-white uppercase text-sm tracking-widest mb-6"></div>
-            <a href="" class="block mb-4"></a>
-        </div>
-        <div>
-            <div class="font-display text-white uppercase text-sm tracking-widest mb-6">Helpful Links</div>
-            <a href="" class="block mb-4">About</a>
-            <a href="" class="block mb-4">Contact Us</a>
-        </div>
-        <div>
-            <div class="font-display text-white uppercase text-sm tracking-widest mb-6">Find out more</div>
 
-            <a href="" class="block mb-4"></a>
-        </div>
+<footer class="p-4 bg-gray-900 rounded-sm shadow md:px-6 md:py-8 text-white">
+    <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
+            <img src="{{ asset('images/logo.jpg') }}" class="mr-3 h-8" alt="Madeit Sports Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Madeit Sports</span>
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-400 sm:mb-0">
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
+            </li>
+            <li>
+                <a href="#" class="hover:underline">Contact</a>
+            </li>
+        </ul>
     </div>
-    <div class="text-sm lg:text-base text-center font-heading font-light tracking-widest uppercase text-white opacity-75 pb-24">
-        ©@php \Illuminate\Support\Carbon::now()->format('Y') @endphp DESIGN BY STRONGEST. IMAGES BY UNSPLASH
-    </div>
-</div>
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <span class="block text-sm text-gray-400 sm:text-center">© {{ \Carbon\Carbon::now()->format('Y') }} <a href="{{ url('/') }}" class="hover:underline">Madeit Sports™</a>. All Rights Reserved.
+    </span>
+</footer>

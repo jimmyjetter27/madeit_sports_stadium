@@ -1,38 +1,25 @@
-<div class="h-24 z-50 relative container mx-auto px-6 grid grid-cols-3">
 
-    <div x-data="{showMenu: false}" class="flex items-center">
-        <!-- menu button -->
-        <button x-on:click="showMenu = true">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
+<nav class="bg-gray-900 px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray- text-white">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="{{ url('/') }}" class="flex items-center">
+            <img src="{{ asset('images/logo.jpg') }}" class="h-6 mr-3 sm:h-9 rounded-lg" alt="Madeit Sports Logo">
+            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Madeit Sports</span>
+        </a>
+        <div class="flex md:order-2">
 
-        <div x-show="showMenu" class="fixed inset-0 w-full h-full bg-white z-50 text-yellow-900">
-            <div class="container h-full mx-auto px-6 py-8 relative z-10 flex flex-col items-center justify-center text-2xl uppercase font-bold tracking-widest space-y-6">
-                <button x-on:click="showMenu = false" class="absolute top-0 left-0 mt-8 ml-6">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </button>
-            </div>
-            <div class="absolute inset-0 w-full h-full bg-yellow-900 bg-opacity-20"></div>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col text-white p-4 mt-4 border border-gray-100 rounded-lg bg-gray-800 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="{{ url('/') }}" class="block py-2 pl-3 pr-4 rounded md:bg-transparent md:text-white md:p-0" aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url('sports') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sports</a>
+                </li>
+                <li>
+                    <a href="#about_us" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
+                </li>
+            </ul>
         </div>
     </div>
-
-    <div class="flex items-center justify-center">
-        <a href="/" class="text-white uppercase font-bold text-2xl tracking-widest">
-            {{ env('APP_NAME') }}
-        </a>
-    </div>
-
-    <div class="flex items-center justify-end text-white">
-        <div class="space-x-2">
-        <!-- contact button -->
-        <a href="/login">
-            <i class="fas fa-door-open">Login</i>
-{{--            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>--}}
-        </a>
-        <a href="/register">
-            <i class="fas fa-user-plus">Register</i>
-        </a>
-        </div>
-    </div>
-</div>
-<div class="w-full h-24 bg-yellow-900 bg-opacity-95 absolute top-0 left-0"></div>
+</nav>
