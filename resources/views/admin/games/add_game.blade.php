@@ -26,7 +26,7 @@
         </nav>
 
         <div class="m-20 w-1/3">
-            <h1 class="mb-3 font-bold">Update</h1>
+            <h1 class="mb-3 font-bold">New Game</h1>
             <p>Fill in the form to create a new user</p>
             @if (session('error_message'))
                 <h3 class="text-red-500">{{ session('error_message') }}</h3>
