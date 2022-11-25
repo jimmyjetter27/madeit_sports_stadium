@@ -1,4 +1,6 @@
-<x-guest-layout>
+@extends('layouts.app')
+@section('main')
+{{--<x-guest-layout>--}}
     <section class="h-screen">
         <div class="px-6 h-full text-gray-800">
             <div
@@ -107,4 +109,5 @@
             </div>
         </div>
     </section>
-</x-guest-layout>
+{{--</x-guest-layout>--}}
+@endsection
