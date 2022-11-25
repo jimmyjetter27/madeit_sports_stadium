@@ -20,9 +20,9 @@
 
     <script src="../path/to/flowbite/dist/flowbite.js"></script>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased h-screen">
 @include('layouts.header')
-<div class="container">
+<div class="container mt-5">
     @yield('main')
 
 {{--    @endsection--}}

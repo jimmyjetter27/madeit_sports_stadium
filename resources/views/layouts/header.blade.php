@@ -1,4 +1,3 @@
-
 <nav class="bg-gray-900 px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray- text-white">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="{{ url('/') }}" class="flex items-center">
@@ -18,6 +17,9 @@
                 </li>
                 <li>
                     <a href="#about_us" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
+                </li>
+                <li>
+                    <a href="#gallery" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Gallery</a>
                 </li>
             </ul>
         </div>

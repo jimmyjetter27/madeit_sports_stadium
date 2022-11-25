@@ -1,5 +1,5 @@
 
-<footer class="p-4 bg-gray-900 rounded-sm shadow md:px-6 md:py-8 text-white">
+<footer class="p-4 bg-gray-900 rounded-sm shadow md:px-6 md:py-8 text-white w-full fixed bottom-0">
     <div class="sm:flex sm:items-center sm:justify-between">
         <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
             <img src="{{ asset('images/logo.jpg') }}" class="mr-3 h-8" alt="Madeit Sports Logo" />
