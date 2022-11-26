@@ -21,20 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('json_response')->group(function () {
-Route::get('exchange', function (Request $request) {
-//    $request->validate([
-//        'number' => 'required',
-//        'amount' => 'required',
-//        'network' => 'required',
-//    ]);
-    return \App\Momo::momoPay(
-        '0548984119',
-        0.5,
-        \App\Momo::generate_id(),
-        'MTN',
-        url('api/callback')
-    );
-});
+//Route::get('exchange', function (Request $request) {
+////    $request->validate([
+////        'number' => 'required',
+////        'amount' => 'required',
+////        'network' => 'required',
+////    ]);
+//    return \App\Momo::momoPay(
+//        '0548984119',
+//        0.5,
+//        \App\Momo::generate_id(),
+//        'MTN',
+//        url('api/callback')
+//    );
+//});
 
 
 Route::get('collection_callback', function (Request $request) {
