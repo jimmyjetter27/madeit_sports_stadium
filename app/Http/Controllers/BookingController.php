@@ -122,6 +122,15 @@ class BookingController extends Controller
             $game->amount,
             $transaction_id
         );
-        return redirect()->back()->with('success_message', 'Thank you for booking. You will receive a prompt soon!');
+
+        if ($request->network == 'MTN')
+        {
+            $msg = "A prompt will be sent to ".$request->phone_number." within 20secs to authorize your transaction.\nOtherwise\nDial *170#, select option 6, option 3 to authorize.";
+            return redirect()->back()->with('success_message', 'Thank you for booking.'.$msg);
+        } else {
+            $msg = "Please wait for prompt to authorize.";
+            return redirect()->back()->with('success_message', 'Thank you for booking.'.$msg);
+        }
+
     }
 }

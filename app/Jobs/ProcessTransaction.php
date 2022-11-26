@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class ProcessTransaction implements ShouldQueue
 {
@@ -38,6 +39,14 @@ class ProcessTransaction implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $callback_url = url('api/collection_callback');
+        $make_payment = \App\Momo::momoPay(
+            $this->phone_number,
+            $this->amount,
+            $this->transaction_id,
+            $this->network,
+            $callback_url
+        );
+        Log::info('Collection Response: '.json_encode($make_payment));
     }
 }
