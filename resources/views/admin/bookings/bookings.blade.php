@@ -41,6 +41,9 @@
                             Transaction ID
                         </th>
                         <th scope="col" class="py-3 px-6">
+                            Status
+                        </th>
+                        <th scope="col" class="py-3 px-6">
                             Amount
                         </th>
                         <th scope="col" class="py-3 px-6">
@@ -63,6 +66,19 @@
                             <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $booking->payment->transaction_id }}
                             </td>
+                            @if($booking->payment->status == 'pending')
+                                <td class="py-4 px-6 font-medium text-yellow-400 whitespace-nowrap dark:hover:text-yellow-900">
+                                    {{ $booking->payment->status }}
+                                </td>
+                            @elseif($booking->payment->status == 'success')
+                                <td class="py-4 px-6 font-medium text-green-400 whitespace-nowrap dark:text-white">
+                                    {{ $booking->payment->status }}
+                                </td>
+                            @else
+                                <td class="py-4 px-6 font-medium text-red-400 whitespace-nowrap dark:text-white">
+                                    {{ $booking->payment->status }}
+                                </td>
+                            @endif
                             <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $booking->payment->total_amount }}
                             </td>
